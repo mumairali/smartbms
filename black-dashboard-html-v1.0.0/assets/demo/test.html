@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            First Web Page
+        </title>
+        <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+          <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-database.js"></script>
+    </head>
+    <body>
+    <h1 id="1"></h1>
+    <h1 id="2"></h1>
+    <h1 id="3"></h1>
+
+    <script>
+  // Import the functions you need from the SDKs you need
+ 
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+  apiKey: "AIzaSyCFLWJiKrlMJIB2_TJWVoV4M2QIXWtUeqk",
+  authDomain: "bmss-48ed4.firebaseapp.com",
+  databaseURL: "https://bmss-48ed4-default-rtdb.firebaseio.com/",
+  projectId: "bmss-48ed4",
+  storageBucket: "bmss-48ed4.appspot.com",
+  messagingSenderId: "878524069250",
+  appId: "1:878524069250:web:c81d783fcaefe6be1e8b9b",
+  measurementId: "G-PY2EJ55G2P"
+};
+
+  // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+
+var BigOne = document.getElementById('1');
+var BigTwo = document.getElementById('2');
+var BigThree = document.getElementById('3');
+var dbRef = firebase.database().ref().child('BMS_BQ76920');
+//dbRef.child('lastUpdatedTime').on('value', snap => BigOne.innerText = snap.val()); 
+//dbref.on('value', )
+//dbRef.child('lastUpdatedTime').on('value', function (snapshot)
+dbRef.on('value', function (snapshot)
+{
+    UpdateData(snapshot)
+});
+
+function UpdateData(data)
+{
+    console.log(data.length);
+
+   BigOne.innerText = data.child('lastUpdatedTime').val();
+   BigTwo.innerText = data.child('packVoltage').val();
+   BigThree.innerText = data.child('packCurrent').val();
+
+   
+/*
+for(var i=1; i<len; i++) {
+        cdata.push({
+        label: data[i]['label'],
+        value: data[i]['value']
+    });
+    */
+
+    //BigOne.innerText = data=
+}
+
+
+////   var ref = firebase.database().ref("BMS_BQ76920");
+//       ref.once('packCurrent').then(function (snapshot) {
+//       callbackIN(snapshot.val())
+//   });
+// }
+
+// window.addEventListener("load", getData(genFunction));
+
+// function genFunction(BMS_BQ76920) {
+//   //myTestVarFunc(2);
+//   console.log("Hello");
+//     myTestVarFunc(2);
+//     //var cdata = ['packCurrent'];
+//     var len = BMS_BQ76920.length;
+    
+
+               </script> 
+    </body>
+</html
