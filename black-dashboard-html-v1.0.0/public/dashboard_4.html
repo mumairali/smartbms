@@ -402,11 +402,11 @@
             //branchDiv.className = 'branch_'+branchId;
             branchDiv.style = "display: flex; flex-direction:row; border:0px solid orange;";
 
-            branchDiv.appendChild(getBatteryHTML(branchId, cellId, 4));//getVolts(3.8, 4.5)));
+            branchDiv.appendChild(getBatteryHTML(branchId, cellId, "A", 4));//getVolts(3.8, 4.5)));
             cellId = cellId + 1;
-            branchDiv.appendChild(getBatteryHTML(branchId, cellId, 4));// getVolts(3.8, 4.5)));
+            branchDiv.appendChild(getBatteryHTML(branchId, cellId, "B", 4));// getVolts(3.8, 4.5)));
             cellId = cellId + 1;
-            branchDiv.appendChild(getBatteryHTML(branchId, cellId, 4));//getVolts(3.8, 4.5)));
+            branchDiv.appendChild(getBatteryHTML(branchId, cellId, "C", 4));//getVolts(3.8, 4.5)));
 			cellId = cellId + 1;
             
 			branchId = branchId + 1;
@@ -418,9 +418,9 @@
 
         }
 
-        function getBatteryHTML(branchId ,cellId, volts) {
+        function getBatteryHTML(branchId ,cellId, name, volts) {
 		  var id = cellId;
-		  var cell_text = (branchId*10) + (cellId - (branchId-1)*3);
+		  var cell_text = branchId + name;
           var cellDiv = document.createElement('div');
           cellDiv.id = 'cell_' + id;
           cellDiv.className = 'cell_' + id;

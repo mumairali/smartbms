@@ -82,6 +82,8 @@ demo = {
       myChartData.update();
     }
 
+	var VoltagePercent = (valuePack * 100) / 12.6;
+
     // Guage value
 
     if (document.getElementById("firstGuage")) {
@@ -90,7 +92,8 @@ demo = {
     }
     if (document.getElementById("firstGuage")) {
       var secondGuage = document.getElementById("secondGuage");
-      secondGuage.setAttribute("data-value", dataFirebase.child('packCurrent').val());
+      //secondGuage.setAttribute("data-value", dataFirebase.child('packCurrent').val());
+	  secondGuage.setAttribute("data-value", VoltagePercent);
     }
 
     if (document.getElementById("firstGuage")) {
