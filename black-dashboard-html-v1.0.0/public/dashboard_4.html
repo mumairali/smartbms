@@ -367,7 +367,7 @@
           });
         });
 
-        var greenBtyStartRange = 4.0;
+        var greenBtyStartRange = 3.0;
         var totalBranches = 40;
 
 
@@ -402,14 +402,14 @@
             //branchDiv.className = 'branch_'+branchId;
             branchDiv.style = "display: flex; flex-direction:row; border:0px solid orange;";
 
-            branchDiv.appendChild(getBatteryHTML(branchId, 1, getVolts(3.8, 4.5)));
-            //cellId = cellId + 1;
-            branchDiv.appendChild(getBatteryHTML(branchId, 2, getVolts(3.8, 4.5)));
-            //cellId = cellId + 1;
-            branchDiv.appendChild(getBatteryHTML(branchId, 3, getVolts(3.8, 4.5)));
-            
+            branchDiv.appendChild(getBatteryHTML(branchId, cellId, 4));//getVolts(3.8, 4.5)));
+            cellId = cellId + 1;
+            branchDiv.appendChild(getBatteryHTML(branchId, cellId, 4));// getVolts(3.8, 4.5)));
+            cellId = cellId + 1;
+            branchDiv.appendChild(getBatteryHTML(branchId, cellId, 4));//getVolts(3.8, 4.5)));
 			cellId = cellId + 1;
-            branchId = branchId + 1;
+            
+			branchId = branchId + 1;
 
             branchMainDiv.appendChild(branch_Text);
             branchMainDiv.appendChild(branchDiv);
@@ -419,14 +419,15 @@
         }
 
         function getBatteryHTML(branchId ,cellId, volts) {
-			var id = (branchId*10) + cellId;
+		  var id = cellId;
+		  var cell_text = (branchId*10) + (cellId - (branchId-1)*3);
           var cellDiv = document.createElement('div');
           cellDiv.id = 'cell_' + id;
           cellDiv.className = 'cell_' + id;
           cellDiv.style = "display: flex; flex-direction:column; border:0px solid blue; padding:0px; ";
 
           var cell_ID_Text = document.createElement('span');
-          cell_ID_Text.innerHTML = 'Cell: ' + id;
+          cell_ID_Text.innerHTML = 'Cell: ' + cell_text;
           cell_ID_Text.style = " text-align:center; color: white; font-weight: bold; margin:5px;";
 
           var cell_volts_Text = document.createElement('span');

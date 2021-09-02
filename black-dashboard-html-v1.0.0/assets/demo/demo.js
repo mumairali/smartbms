@@ -6,6 +6,11 @@ var myChartData;
 var myVGuage;
 var gaugePS;
 
+var totalCells = 120;
+var greenBtyStartRange = 3.0;
+
+
+
 demo = {
   initPickColor: function () {
     console.log("Function 1");
@@ -48,9 +53,7 @@ demo = {
     var myVar = document.getElementById('lastUpdatedTime2');
     myVar.innerText = dataFirebase.child('lastUpdatedTime').val();
 
-    var totalCells = 120;
-    var greenBtyStartRange = 4.0;
-
+    
     for (var i = 0; i < totalCells; i++) {
       var valueCell = dataFirebase.child('v_array').child(i).val();
 
@@ -73,7 +76,7 @@ demo = {
 
     // PackVoltage extract 
     if (document.getElementById("chartBig1")) {
-      var valuePack = dataFirebase.child('packVoltage').val();
+      var valuePack = dataFirebase.child('batt_array').child(0).val();
       chart_data.shift();
       chart_data.push(valuePack);
       myChartData.update();
@@ -83,7 +86,7 @@ demo = {
 
     if (document.getElementById("firstGuage")) {
       var firstGuage = document.getElementById("firstGuage");
-      firstGuage.setAttribute("data-value", dataFirebase.child('packVoltage').val());
+      firstGuage.setAttribute("data-value", valuePack);
     }
     if (document.getElementById("firstGuage")) {
       var secondGuage = document.getElementById("secondGuage");
@@ -576,7 +579,7 @@ demo = {
           ticks: {
             beginAtZero: true,
             suggestedMin: 0,
-            suggestedMax: 30,
+            suggestedMax: 20,
             padding: 20,
             fontColor: "#9a9a9a"
           }
